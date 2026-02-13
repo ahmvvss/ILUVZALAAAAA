@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Zala 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: background 1s ease;
+        }
+
+        body.romantic {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c94b4b 50%, #4b134f 100%);
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #764ba2;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .highlight {
+            color: #ff6b9d;
+            font-weight: bold;
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        button {
+            padding: 20px 50px;
+            font-size: 1.3em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+            color: white;
+            margin-top: 30px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2.5em;
+            animation: float 4s ease-in infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .buttons-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+            color: white;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #a8b3ff 0%, #c5ceff 100%);
+            color: #764ba2;
+            padding: 15px 40px;
+            font-size: 1.2em;
+        }
+
+        #noBtn:hover {
+            transform: scale(0.95);
+        }
+
+        .success-message h2 {
+            font-size: 2.5em;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+        }
+
+        .success-message p {
+            font-size: 1.3em;
+            color: #764ba2;
+            line-height: 1.6;
+        }
+
+        .gif-container {
+            margin: 30px 0;
+        }
+
+        .gif-container img {
+            max-width: 200px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff6b9d;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .emoji-rain {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.jsdelivr.net/gh/napthedev/audio-files@main/we-fell-in-love-in-october.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <div class="container">
+        <!-- Page 1: Compliment -->
+        <div id="page1" class="page active">
+            <h1>ZALA<br>YOU'RE SO <span class="highlight sparkle">PRETTY</span> ✨</h1>
+            <button id="cutieBtn">Click here if cutie 🥰</button>
+        </div>
+
+        <!-- Page 2: Make it Romantic -->
+        <div id="page2" class="page">
+            <h2>Want to make this<br><span class="highlight">more romantic?</span> 💕</h2>
+            <button id="romanticBtn">Make everything romantic ✨</button>
+        </div>
+
+        <!-- Page 3: The Big Question -->
+        <div id="page3" class="page">
+            <h1>Will you be my girl?<br><span class="highlight">(FOREVER)</span> 💖</h1>
+
+            <div class="buttons-group">
+                <button id="yesBtn">Yes 🤭</button>
+                <button id="noBtn">No 😔</button>
+            </div>
+        </div>
+
+        <!-- Page 4: Success Message -->
+        <div id="page4" class="page success-message">
+            <h2>💕 YAYY I LOVE YOU SOOO MUCHHHHHH 💕</h2>
+            <div class="emoji-rain">
+                😊💕💖✨🥰🌹💗
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let heartsInterval = null;
+        const music = document.getElementById('bgMusic');
+
+        // Start music from 48 seconds when page loads
+        window.addEventListener('load', function() {
+            music.currentTime = 48;
+            music.volume = 0.5; // 50% volume
+            // Try to autoplay (may need user interaction on some browsers)
+            music.play().catch(function(error) {
+                console.log("Autoplay prevented, will play on first interaction");
+            });
+        });
+
+        // Ensure music plays on any user interaction
+        document.addEventListener('click', function() {
+            if (music.paused) {
+                music.currentTime = 48;
+                music.play();
+            }
+        }, { once: true });
+
+        // Page navigation
+        function showPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('page' + pageNumber).classList.add('active');
+        }
+
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            const hearts = ['💕', '💖', '💗', '💓', '💝', '❤️', '🌹'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // Page 1 -> Page 2
+        document.getElementById('cutieBtn').addEventListener('click', function() {
+            showPage(2);
+        });
+
+        // Page 2 -> Page 3 (with romantic transformation)
+        document.getElementById('romanticBtn').addEventListener('click', function() {
+            // Change background to romantic
+            document.body.classList.add('romantic');
+            
+            // Start hearts animation
+            heartsInterval = setInterval(createHeart, 200);
+            
+            // Show page 3 after brief delay
+            setTimeout(() => {
+                showPage(3);
+            }, 500);
+        });
+
+        // Yes button
+        document.getElementById('yesBtn').addEventListener('click', function() {
+            showPage(4);
+            
+            // Create confetti effect
+            for(let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = ['#ff6b9d', '#764ba2', '#667eea', '#ffd700', '#ff69b4'][Math.floor(Math.random() * 5)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        });
+
+        // No button - make it run away
+        document.getElementById('noBtn').addEventListener('mouseover', function() {
+            const x = Math.random() * (window.innerWidth - 200);
+            const y = Math.random() * (window.innerHeight - 100);
+            this.style.position = 'fixed';
+            this.style.left = x + 'px';
+            this.style.top = y + 'px';
+        });
+
+        // If they manage to click No
+        document.getElementById('noBtn').addEventListener('click', function() {
+            alert('The "No" button is just decorative! 😄 Try the Yes button! 💕');
+        });
+    </script>
+</body>
+</html>
